@@ -27,7 +27,7 @@ services:
     depends_on:
       - site
     restart: 'no'
-    command: install
+    command: install --no-dev
     working_dir: /var/www
     volumes:
       - ./html/wp-content:/var/www/html/wp-content

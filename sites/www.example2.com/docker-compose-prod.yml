@@ -28,7 +28,7 @@ services:
       - site
     restart: 'no'
     command: install
-    working_dir: /var/www
+    working_dir: /var/www --no-dev
     volumes:
       - ./html/wp-content:/var/www/html/wp-content
       - ./vendor:/var/www/vendor
