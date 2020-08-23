@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  site:
+    container_name: $NAME
+    image: php:7.4-apache
+    restart: always
+    env_file: .env
+    environment:
+      VIRTUAL_HOST: $ALIASES
+    volumes:
+      - /.:/var/www
+    networks:
+      - docker_network
+        
+  composer:
+    image: composer:latest
+    depends_on:
+      - site
+    restart: 'no'
+    command: install --no-dev
+    working_dir: /var/www
+    volumes:
+      - ./vendor:/var/www/vendor
+      - ./composer.json:/var/www/composer.json
+      - ./composer.lock:/var/www/composer.lock
+
+networks:
+  docker_network:
+    name: docker_network
