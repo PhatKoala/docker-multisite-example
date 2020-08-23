@@ -1,8 +1,2 @@
 .idea
-mysql/data
-nginx/certs
-nginx/conf.d
-nginx/vhost.d
-sites
 .DS_Store
-.env
